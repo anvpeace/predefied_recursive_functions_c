@@ -66,7 +66,99 @@ int random_five(){
 
 }
 
-// lab exercise: three functions 
+// Example 4
+void cheer(int n){
+
+    // one block calls the recursive the other one stops
+    if(n<=1){
+        cout<<"STOP"<<endl;
+    }else{
+        cout<<(n * 2)<<"\t";
+        cheer(n-1);
+    }
+}
+
+/* TABLE OF ANALYSIS
+function   | int n  |  if(n<=1)      |  else
+--------------------------------------------------------------
+iteration  |        | true or false  | cout<<(n*2) | cheer(n-1)
+----------------------------------------------------------------
+    1      |    5   |if(5<=1) false  | cout<<(5*2) = 10 | cheer(5-1)= 4
+----------------------------------------------------------------
+    2      |    4   | if(4<=1) false | cout<<(4*2) = 8  | cheer(4-1) = 3
+-----------------------------------------------------------------
+    3      |   3    | if(3<=1) false | cout<<(3*2) = 6  | cheer(3-1) = 2
+------------------------------------------------------------------------
+    4      |   2    | if(2<=1) false | cout<<(2*2) = 4  | cheer(2-1) = 1
+-----------------------------------------------------------------------
+    5      |   1    | if(1<=1) true  (STOP)
+
+    terminal prompt: 10 8 6 4 STOP
+
+*/
+
+// example 5:factorial sequence
+int factorial(int n){
+    if(n != 1){
+        return (n*factorial(n-1));
+    }else{
+        return 1;
+    }
+}
+
+/* TABLE OF ANALYSIS
+function   |           |  if(n!=1)                               |  else
+iteration  |  int n    |return(n*factorial(n-1))                 |  return 1
+----------------------------------------------------------------
+    1      |   n = 4   |true, return(4*factorial(4-1 = 3))       |  skip
+----------------------------------------------------------------
+    2      |   n = 3   |true, (4*return(3*factorial(3-1 = 2)))   |  skip
+-----------------------------------------------------------------
+    3      |   n = 2   |true, (4*3*return(2*factorial(2-1 = 1))) |  skip
+------------------------------------------------------------------------
+    4      |   n = 1   |false (stop recursive function           | return 1
+-----------------------------------------------------------------------
+    
+int f = factorial(4); --> 4*3*2*1 = 24
+cout<<"The final answer is = "<<f<<endl; ---> the final answer = 24
+
+
+*/
+
+// example 6: linear recursive functions
+
+int linearfunction(int m){
+    if(m>10){
+        return -6;
+    }else{
+        return (linearfunction(m+2) * (m-4));
+    }
+}
+
+
+/* TABLE OF ANALYSIS
+function   |           | if(m>10)      |  else
+iteration  |  int m    | return -6     |  return (linearfunction(m+2) * (m-4))
+----------------------------------------------------------------
+    1      |   m = 3   |  skip         | return (linearfunction(3+2 = 5) * (3-4 = -1))
+----------------------------------------------------------------
+    2      |   m = 5   | skip          | return (linearfunction(5+2 = 7) * (5-4 = 1))*(-1)
+-----------------------------------------------------------------
+    3      |   m = 7   | skip          | return (linearfunction(7+2 = 9) * (7-4 = 3))*(1)*(-1)
+------------------------------------------------------------------------
+    4      |   m = 9   | skip          | return (linearfunction(9+2 = 11) * (9-4 = 5))*(3)*(1)*(-1)
+-----------------------------------------------------------------------
+    5      |   m = 11  | return -6   (stop recursive functions)
+  
+int f = factorial(4); --> -6*-5*3*1*-1 = 90
+cout<<"The final answer is = "<<f<<endl; ---> the final answer = 24
+
+
+*/
+
+
+// LAB EXERCISE A 
+// three functions 
 // One function to randomly generate and return a number between 1 and 100 (you must use C++ built-in function).
 
 int random_time(){
@@ -98,3 +190,31 @@ void print_calcuation(float time, float falling_distace){
 // The gravity is set as a global variable with value of 9.8. 
 
 //The time is collected from the first function and passes as an argument.
+
+// LAB EXERCISE B
+int mystery(int n){
+    if (n<=1){
+        return 1;
+    }else{
+        return (mystery(n-1)+n*2);
+    }
+}
+
+/* TABLE OF ANALYSIS
+function   |           | if(n<=1)     |  else
+iteration  |  int n    | return 1     |  return (mystery(n-1)+n*2)
+----------------------------------------------------------------
+    1      |   n = 5   |  skip         | return (mystery(5-1 = 4) +5 * 2 = 10)
+----------------------------------------------------------------
+    2      |   n = 4   | skip          | return (mystery(4-1 = 3) +4 * 2 = 8)
+-----------------------------------------------------------------
+    3      |   n = 3   | skip          | return (mystery(3 -1 = 2) +3 * 2 = 6)
+------------------------------------------------------------------------
+    4      |   n = 2   | skip          | return (mystery(2-1 = 1) +2 * 2 = 4)
+-----------------------------------------------------------------------
+    5      |   n = 1   | return 1       (stop recursive function)
+  
+mystery(5); --> 10 + 8 + 6 + 4 + 1 = 29
+cout<<"Result = "<<mystery(5)<<endl; ----> Result = 29
+
+*/

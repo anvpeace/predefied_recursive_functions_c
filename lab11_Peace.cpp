@@ -33,7 +33,21 @@ cout<<"Example 3: Random number between -5 and 5  "<<endl;
 
  cout<<"Random number = "<< rand5 <<endl; 
 
-cout<<"Lab Exercise "<<endl;
+
+cout<<"Example 4: recursive function  "<<endl;
+
+   cheer(5);
+
+cout<<"Example 5: factorial sequence  "<<endl;
+
+   int f = factorial(4);
+   cout<<"The final answer is = "<<f<<endl;
+
+cout<<"Example 6: linear recursive function  "<<endl;
+ int r = linearfunction(3);
+cout<<"Total linear function is = "<<r<<endl;
+
+cout<<"Lab Exercise A "<<endl;
 
    int time = random_time();
    int gravity = 9.8;
@@ -46,8 +60,9 @@ cout<<"Lab Exercise "<<endl;
 
    print_calcuation(time, cal_distance);
 
+cout<<"Lab Exercise B "<<endl;
 
-
-
+cout<<"Result =  "<<mystery(5)<<endl;
  return 0;
 }
+
